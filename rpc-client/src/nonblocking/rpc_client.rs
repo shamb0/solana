@@ -2527,11 +2527,11 @@ impl RpcClient {
     ) -> ClientResult<EncodedConfirmedBlock> {
         self.send(
             self.maybe_map_request(RpcRequest::GetBlock).await?,
-            json!([slot, encoding]),
+            json!([slot, {"maxSupportedTransactionVersion": 0}]),
         )
         .await
     }
-
+    
     /// Returns identity and transaction information about a confirmed block in the ledger.
     ///
     /// # RPC Reference
